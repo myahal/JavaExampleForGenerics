@@ -3,14 +3,12 @@ package Container;
 import Element.Square;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-/**
- * Created by miya on 2016/06/08.
- */
-//public class SquareContainer<T extends Square & SomeInterface> {
+//public class SquareContainer<T extends Square & SomeInterface> {      上限境界を複数設定するサンプル
 public class SquareContainer<T extends Square> {
     private List<T> container = new ArrayList<T>();
 
@@ -33,6 +31,11 @@ public class SquareContainer<T extends Square> {
     public double calcSomething(Function<SquareContainer, List> convertor) {
         List<Double> result = convertor.apply(this);
         return result.stream().reduce(0.0, (base, value) -> base + value);
+    }
+
+    public double max(Function<SquareContainer, List> convertor) {
+        List<Double> result = convertor.apply(this);
+        return result.stream().max(Comparator.naturalOrder()).get();
     }
 
 }

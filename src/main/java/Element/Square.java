@@ -1,8 +1,5 @@
 package Element;
 
-/**
- * Created by miya on 2016/06/08.
- */
 public class Square implements Shape {
     protected double bottom, height;
 
